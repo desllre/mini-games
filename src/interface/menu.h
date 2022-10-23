@@ -31,7 +31,9 @@ private:
         float width;
         float height;
     };
-    button changeGame;
+    button OlegGame;
+    button MaksGame;
+    button VovaGame;
     button end;
     sf::Color bgColor;
 };

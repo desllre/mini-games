@@ -3,7 +3,6 @@
 // /usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf
 
 Menu::button::button(const std::string fontPath, const std::string buttonText, const sf::Color bgColor, int textSize, float rectX, float rectY, float width, float height, float textX, float textY){
-
     this->x = rectX;
     this->y = rectY;
     this->width = width;
@@ -18,7 +17,6 @@ Menu::button::button(const std::string fontPath, const std::string buttonText, c
     text = sf::Text(buttonText, font, textSize);
     text.setColor(sf::Color::Black);
     text.setPosition( textX,textY);
-
 };
 
 void Menu::button::setActive(const float cursorX, const float cursorY){
@@ -28,19 +26,37 @@ void Menu::button::setActive(const float cursorX, const float cursorY){
         isActive = false;
 }
 
-Menu::Menu(): changeGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "ChangeGame",
-                         sf::Color(116, 219, 210), 20, 450, 400, 250 , 60, 510, 415),
+Menu::Menu(): OlegGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "OlegGame",
+                         sf::Color(116, 219, 210), 20, 450, 260, 250 , 60, 520, 275),
+              MaksGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "MaksGame",
+                       sf::Color(116, 219, 210), 20, 450, 340, 250 , 60, 520, 355),
+              VovaGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "VovaGame",
+                       sf::Color(116, 219, 210), 20, 450, 420, 250 , 60, 520, 435),
               end("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "Exit",
                   sf::Color(116, 219, 210), 20, 450, 500, 250 , 60, 550, 515){
     bgColor = sf::Color::White;
 }
 
 void Menu::Draw(sf::RenderWindow& window) {
-    if (changeGame.isActive) {
-        changeGame.rect.setOutlineColor(sf::Color::Red);
+    if (OlegGame.isActive) {
+        OlegGame.rect.setOutlineColor(sf::Color::Red);
     }
     else{
-        changeGame.rect.setOutlineColor(sf::Color::Black);
+        OlegGame.rect.setOutlineColor(sf::Color::Black);
+    }
+
+    if (MaksGame.isActive) {
+        MaksGame.rect.setOutlineColor(sf::Color::Red);
+    }
+    else{
+        MaksGame.rect.setOutlineColor(sf::Color::Black);
+    }
+
+    if (VovaGame.isActive) {
+        VovaGame.rect.setOutlineColor(sf::Color::Red);
+    }
+    else{
+        VovaGame.rect.setOutlineColor(sf::Color::Black);
     }
 
     if (end.isActive) {
@@ -52,10 +68,14 @@ void Menu::Draw(sf::RenderWindow& window) {
         end.rect.setOutlineColor(sf::Color::Black);
     }
 
-    window.draw(changeGame.rect);
+    window.draw(OlegGame.rect);
+    window.draw(MaksGame.rect);
+    window.draw(VovaGame.rect);
     window.draw(end.rect);
 
-    window.draw(changeGame.text);
+    window.draw(OlegGame.text);
+    window.draw(MaksGame.text);
+    window.draw(VovaGame.text);
     window.draw(end.text);
 }
 
@@ -64,6 +84,8 @@ sf::Color& Menu::GetBgColor(){
 }
 
 void Menu::setButtonActive(const sf::Vector2i vect){//сюда будут передаваться координаты курсора
-    changeGame.setActive(vect.x, vect.y);
+    OlegGame.setActive(vect.x, vect.y);
+    MaksGame.setActive(vect.x, vect.y);
+    VovaGame.setActive(vect.x, vect.y);
     end.setActive(vect.x, vect.y);
 }
