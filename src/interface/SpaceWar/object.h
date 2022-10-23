@@ -4,8 +4,12 @@
 #pragma once
 
 struct Object{
-
+    Object() = default;
     Object(const std::string, float, float, uint16_t, uint16_t);
+
+    void init(const std::string, float, float, uint16_t, uint16_t);
+
+    Object& operator= (Object&);
 
     sf::Texture texture;
     sf::Sprite sprite;

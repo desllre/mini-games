@@ -20,22 +20,33 @@ void Ship::Move() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
         x -= 0.5;
         currentSprite.setTexture(textures[Directs::Left]);
+        isMoving = true;
     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
         x += 0.5;
         currentSprite.setTexture(textures[Directs::Right]);
+        isMoving = true;
+    } else {
+        isMoving = false;
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
         y -= 0.5;
         currentSprite.setTexture(textures[Directs::Forward]);
+        isMoving = true;
     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
         y += 0.5;
         currentSprite.setTexture(textures[Directs::Down]);
+        isMoving = true;
+    } else {
+        isMoving = false;
     }
 }
 
 void Ship::Draw(sf::RenderWindow& window){
     Move();
+    if (!isMoving){
+        currentSprite.setTexture(textures[Directs::Forward]);
+    }
     currentSprite.setPosition(x, y);
     window.draw(currentSprite);
 }

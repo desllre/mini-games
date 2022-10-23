@@ -1,6 +1,8 @@
 #include "spaceWar.h"
 #include "ship.h"
+#include "enemy.h"
 
+Enemys enemys;
 Ship ship;
 
 void spaceWar(sf::RenderWindow& window){
@@ -9,6 +11,8 @@ void spaceWar(sf::RenderWindow& window){
     sf::Texture bgTexture;
     bgTexture.loadFromFile("../Textures/SpaceWar/space.png");
     sf::Sprite bgSprite(bgTexture);
+
+    sf::Clock clock;
 
     while (window.isOpen())
     {
@@ -20,8 +24,13 @@ void spaceWar(sf::RenderWindow& window){
                 window.setActive(false);
             }
         }
+        if (clock.getElapsedTime() >= sf::seconds(2)){
+            enemys.CreateEnemy();
+            clock.restart();
+        }
         window.clear();
         window.draw(bgSprite);
+        enemys.Draw(window);
         ship.Draw(window);
         window.display();
     }

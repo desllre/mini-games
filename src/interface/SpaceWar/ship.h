@@ -10,6 +10,8 @@ public:
 
     void Draw(sf::RenderWindow&);
 
+
+
     enum Directs{
         Left = 0,
         Right = 1,
@@ -24,4 +26,5 @@ private:
     float y;
     uint16_t width;
     uint16_t height;
+    bool isMoving = false;
 };
