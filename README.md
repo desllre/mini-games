@@ -1,2 +1,2 @@
 # mini-games
-Oleg alkash
+
