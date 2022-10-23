@@ -1,12 +1,13 @@
 #include "spaceWar.h"
+#include "ship.h"
+
+Ship ship;
 
 void spaceWar(sf::RenderWindow& window){
     window.setActive();
 
-    sf::Image bgImg;
-    bgImg.loadFromFile("../Textures/SpaceWar/space.png");
     sf::Texture bgTexture;
-    bgTexture.loadFromImage(bgImg);
+    bgTexture.loadFromFile("../Textures/SpaceWar/space.png");
     sf::Sprite bgSprite(bgTexture);
 
     while (window.isOpen())
@@ -21,6 +22,7 @@ void spaceWar(sf::RenderWindow& window){
         }
         window.clear();
         window.draw(bgSprite);
+        ship.Draw(window);
         window.display();
     }
 }
