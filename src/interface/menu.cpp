@@ -27,11 +27,11 @@ void Menu::button::setActive(const float cursorX, const float cursorY){
 }
 
 Menu::Menu(): OlegGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "OlegGame",
-                         sf::Color(116, 219, 210), 20, 450, 260, 250 , 60, 520, 275),
+                         sf::Color(116, 219, 210), 20, 450, 260, 250 , 60, 522, 275),
               MaksGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "MaksGame",
-                       sf::Color(116, 219, 210), 20, 450, 340, 250 , 60, 520, 355),
+                       sf::Color(116, 219, 210), 20, 450, 340, 250 , 60, 522, 355),
               VovaGame("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "VovaGame",
-                       sf::Color(116, 219, 210), 20, 450, 420, 250 , 60, 520, 435),
+                       sf::Color(116, 219, 210), 20, 450, 420, 250 , 60, 522, 435),
               end("/usr/share/fonts/truetype/ubuntu/Ubuntu-B.ttf", "Exit",
                   sf::Color(116, 219, 210), 20, 450, 500, 250 , 60, 550, 515){
     bgColor = sf::Color::White;
