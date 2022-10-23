@@ -1,5 +1,8 @@
 #include "enemy.h"
 
+
+#include "iostream"
+
 void Enemys::Draw(sf::RenderWindow& window) {
     for (auto& i: enemys ){
         window.draw(i.sprite);
@@ -24,13 +27,14 @@ void Enemys::CreateEnemy() {
         while (true){
             if( review(x, y, enemys) ){
                 x = rand() % 1200;
-                y = rand() % 800;
+                y = rand() % 500;
             } else {
                 break;
             }
         }
         enemys.push_back(Object());
         enemys[amountEnemys].init("../Textures/SpaceWar/Enemy/enemy.png", x, y, 64, 64);
+        std::cout << x << "  " << y << std::endl;
     }
 
 }
