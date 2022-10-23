@@ -4,10 +4,10 @@
 
 class Interface{
 public:
-    Interface();
-    virtual void Draw(sf::RenderWindow&) = 0;
-    ~Interface();
-private:
+    Interface() = default;
+    ~Interface() = default;
 
+    virtual void Draw(sf::RenderWindow&) = 0;
+private:
 };
 

@@ -1,12 +1,14 @@
 #include "SFML/Graphics.hpp"
-//#include "interface.h"
+#include "thread"
+#include "interface.h"
 #include "string"
-
 #include "iostream"
+
+#include "SpaceWar/spaceWar.h"
 
 #pragma once
 
-class Menu/*: public Interface*/{
+class Menu: public Interface{
 public:
     Menu();
     void Draw(sf::RenderWindow&);

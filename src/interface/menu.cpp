@@ -47,6 +47,13 @@ void Menu::Draw(sf::RenderWindow& window) {
 
     if (MaksGame.isActive) {
         MaksGame.rect.setOutlineColor(sf::Color::Red);
+        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)){
+            window.setActive(false);
+            sf::Thread spaceWarThread(spaceWar, std::ref(window));
+            spaceWarThread.launch();
+            spaceWarThread.wait();
+            window.setActive();
+        }
     }
     else{
         MaksGame.rect.setOutlineColor(sf::Color::Black);
