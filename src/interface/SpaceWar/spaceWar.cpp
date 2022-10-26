@@ -1,8 +1,7 @@
 #include "spaceWar.h"
 #include "ship.h"
-#include "enemy.h"
 
-Enemys enemys;
+
 Ship ship;
 
 void spaceWar(sf::RenderWindow& window){

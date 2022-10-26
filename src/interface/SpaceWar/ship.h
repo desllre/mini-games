@@ -1,5 +1,4 @@
 #include "SFML/Graphics.hpp"
-#include "object.h"
 #include "array"
 
 class Ship{
