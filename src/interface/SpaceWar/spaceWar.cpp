@@ -23,8 +23,8 @@ void spaceWar(sf::RenderWindow& window){
                 window.setActive(false);
             }
         }
+
         if (clock.getElapsedTime() >= sf::seconds(2)){
-            enemys.CreateEnemy();
             clock.restart();
         }
 
@@ -32,7 +32,6 @@ void spaceWar(sf::RenderWindow& window){
 
         window.clear();
         window.draw(bgSprite);
-        enemys.Draw(window);
         ship.Draw(window);
         window.display();
     }
