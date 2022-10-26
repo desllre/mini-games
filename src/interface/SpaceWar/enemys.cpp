@@ -1,5 +1,7 @@
 #include "enemys.h"
 
+#include "iostream"
+
 void Enemys::AddEnemy(const std::string& KeyName){
     bool (*review)(float&, float&, std::vector<sf::Sprite>&);
     // в обычной игре таким способом спавнить энеми просто глупость
@@ -25,15 +27,16 @@ void Enemys::AddEnemy(const std::string& KeyName){
             }
         }
         pushEnemy(KeyName, x, y);
+        std::cout << x << "  " << y << std::endl;
     }
 
 }
 
 void Enemys::pushEnemy(const std::string& KeyName, const float& x, const float& y){
-    if (enemys.size() == 0){
+    if (enemys.size() == 8){
         return;
     }
-    enemys.push_back( sf::Sprite(*TextureHolder.getResources(KeyName)) );
+    enemys.emplace_back( sf::Sprite(*TextureHolder.getResources(KeyName)) );
     enemys[enemys.size() - 1].setPosition(x, y);
 }
 

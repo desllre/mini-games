@@ -29,19 +29,19 @@ void spaceWar(sf::RenderWindow& window){
         {
             if (event.type == sf::Event::Closed) {
                 window.close();
-                enemys.
                 window.setActive(false);
             }
         }
 
         if (clock.getElapsedTime() >= sf::seconds(2)){
+            enemys.AddEnemy("enemy");
             clock.restart();
         }
 
         ship.Move();
-
         window.clear();
         window.draw(bgSprite);
+        enemys.Draw(window);
         ship.Draw(window);
         window.display();
     }
