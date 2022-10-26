@@ -28,6 +28,9 @@ void spaceWar(sf::RenderWindow& window){
             enemys.CreateEnemy();
             clock.restart();
         }
+
+        ship.Move();
+
         window.clear();
         window.draw(bgSprite);
         enemys.Draw(window);
