@@ -1,10 +1,15 @@
 #include "spaceWar.h"
 #include "ship.h"
-
+#include "ResourceHolder.h"
+#include "string"
 
 Ship ship;
 
 void spaceWar(sf::RenderWindow& window){
+    // Загрузка текстур
+    TextureHolder.loadFromFile("../Textures/SpaceWar/Enemy/enemy.png", "enemy");
+
+
     window.setActive();
 
     sf::Texture bgTexture;

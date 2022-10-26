@@ -9,6 +9,6 @@ find_package(SFML COMPONENTS graphics audio REQUIRED)
 add_executable(mini-games src/main.cpp src/interface/interface.h
         src/interface/menu.cpp src/interface/menu.h src/game.h
         src/interface/SpaceWar/ship.cpp src/interface/SpaceWar/ship.h
-        src/interface/SpaceWar/spaceWar.cpp src/interface/SpaceWar/spaceWar.h)
+        src/interface/SpaceWar/spaceWar.cpp src/interface/SpaceWar/spaceWar.h src/interface/SpaceWar/ResourceHolder.h src/interface/SpaceWar/enemys.cpp src/interface/SpaceWar/enemys.h)
 
 target_link_libraries(mini-games sfml-graphics sfml-audio sfml-window sfml-system)

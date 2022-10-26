@@ -14,7 +14,7 @@ private:
     // пользуемся указателем, чтобы хранить для каждого отдельное ресурса один экземпляр
 public:
 
-    ResourceType* loadFromFile(const std::string& PathToFile, const std::string& Key){
+    ResourceType* loadFromFile(const std::string& PathToFile, const KeyType& Key){
         ResourceType* &resourceRef = Resources[Key]; // проверка на нахождение в структуре
         if(resourceRef != nullptr){
             return resourceRef;
@@ -48,8 +48,4 @@ private:
     MapType Resources;
 };
 
-template<typename KeyType, typename ResourceType>
-ResourceHolder<KeyType, ResourceType>& getGlobalResourceHolder(){
-    static ResourceHolder<KeyType, ResourceType> holder;
-    return holder;
-}
+static ResourceHolder<std::string, sf::Texture> TextureHolder;
