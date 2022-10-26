@@ -1,14 +1,18 @@
 #include "spaceWar.h"
 #include "ship.h"
 #include "ResourceHolder.h"
+#include "enemys.h"
+
 #include "string"
 
 Ship ship;
+Enemys enemys;
 
 void spaceWar(sf::RenderWindow& window){
     // Загрузка текстур
     TextureHolder.loadFromFile("../Textures/SpaceWar/Enemy/enemy.png", "enemy");
 
+    //********************************************************
 
     window.setActive();
 
@@ -25,6 +29,7 @@ void spaceWar(sf::RenderWindow& window){
         {
             if (event.type == sf::Event::Closed) {
                 window.close();
+                enemys.
                 window.setActive(false);
             }
         }

@@ -11,11 +11,14 @@ public:
     Enemys() = default;
     ~Enemys() = default;
 
-    void pushEnemy(const std::string&, const float&, const float&);
+
+    void AddEnemy(const std::string&);
 
     void Draw(sf::RenderWindow&);
 
     uint8_t Amount();
 private:
+    void pushEnemy(const std::string&, const float&, const float&);
+
     std::vector<sf::Sprite> enemys;
 };
