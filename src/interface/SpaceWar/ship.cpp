@@ -16,13 +16,13 @@ void Weapon::Move(Enemys& enemys){
             lasers.erase(i);
         }
 
-        if (enemys.CheckEnemy(i->x, i->y + 15)){
+        if (enemys.CheckEnemy(i->x, i->y)){
             enemys.DeleteEnemy(i->x, i->y);
             lasers.erase(i);
             return;
         }
         i->y -= 0.3;
-        i->laser.move(0, -0.3);
+        i->laser.move(0, -0.4);
     }
 }
 
