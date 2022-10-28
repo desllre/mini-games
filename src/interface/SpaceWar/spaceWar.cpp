@@ -1,12 +1,10 @@
 #include "spaceWar.h"
 #include "string"
 
-Ship ship;
-Enemys enemys;
-
 void spaceWar(sf::RenderWindow& window){
 
-    initialization();
+    Ship ship;
+    Enemys enemys;
 
     window.setActive();
 
@@ -28,7 +26,7 @@ void spaceWar(sf::RenderWindow& window){
         }
 
         if (clock.getElapsedTime() >= sf::seconds(2)){
-            enemys.AddEnemy("enemy");
+            enemys.AddEnemy();
             clock.restart();
         }
 
@@ -41,6 +39,3 @@ void spaceWar(sf::RenderWindow& window){
     }
 }
 
-void initialization(){
-    TextureHolder.loadFromFile("../Textures/SpaceWar/Enemy/enemy.png", "enemy");
-}

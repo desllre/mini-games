@@ -7,6 +7,4 @@
 
 #pragma once
 
-void initialization();
-
 void spaceWar(sf::RenderWindow&);

@@ -2,50 +2,53 @@
 
 #include "iostream"
 
-void Enemys::AddEnemy(const std::string& KeyName){
-    bool (*review)(float&, float&, std::vector<sf::Sprite>&);
+Enemys::Enemys(){
+    texture.loadFromFile("../Textures/SpaceWar/Enemy/enemy.png");
+    enemy.setTexture(texture);
+}
+
+void Enemys::AddEnemy(){
+    bool (*review)(float&, float&, std::vector<Parametrs>&);
     // в обычной игре таким способом спавнить энеми просто глупость
-    review = [](float& x, float& y, std::vector<sf::Sprite>& vect){
+    review = [](float& x, float& y, std::vector<Parametrs>& vect){
         for(auto& i: vect){
-            sf::IntRect buffRect = i.getTextureRect();
-            if(x >= buffRect.left && x <= (buffRect.left + buffRect.width) && y >= buffRect.top && y <= (buffRect.top + buffRect.height))
+            if(x >= i.x - 20 && x <= (i.x + i.width + 20) && y >= i.y - 20 && y <= (i.y + i.height + 20))
                 return true;
         }
         return false;
     };
 
-    if ( enemys.size() <= 8){
+    if ( enemysPos.size() <= 8){
         srand(time(0));
         float x = rand() % 1200;
         float y = rand() % 400;
         while (true){
-            if( review(x, y, enemys) ){
+            if( review(x, y, enemysPos) ){
                 x = rand() % 1136;
                 y = rand() % 500;
             } else {
                 break;
             }
         }
-        pushEnemy(KeyName, x, y);
-        std::cout << x << "  " << y << std::endl;
+        pushEnemy(x, y);
     }
 
 }
 
-void Enemys::pushEnemy(const std::string& KeyName, const float& x, const float& y){
-    if (enemys.size() == 8){
+void Enemys::pushEnemy(const float& x, const float& y){
+    if (enemysPos.size() == 8){
         return;
     }
-    enemys.emplace_back( sf::Sprite(*TextureHolder.getResources(KeyName)) );
-    enemys[enemys.size() - 1].setPosition(x, y);
+    enemysPos.push_back(Parametrs(x, y, 64, 64));
 }
 
 void Enemys::Draw(sf::RenderWindow& window){
-    for(auto& i: enemys){
-        window.draw(i);
+    for(auto& i: enemysPos){
+        enemy.setPosition(i.x, i.y);
+        window.draw(enemy);
     }
 }
 
 uint8_t Enemys::Amount() {
-    return enemys.size();
+    return enemysPos.size();
 }

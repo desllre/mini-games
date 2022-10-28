@@ -1,13 +1,16 @@
 #include "SFML/Graphics.hpp"
 #include "interface/menu.h"
-#include "iostream"
+#include "interface/SpaceWar/ResourceHolder.h"
+
 #pragma once
 
 Menu menu;
 
 void Game(){
+
     sf::RenderWindow window(sf::VideoMode(1200, 800), "mini-games");
     sf::Color bgColor = menu.GetBgColor();
+
     while (window.isOpen())
     {
         sf::Event event;
