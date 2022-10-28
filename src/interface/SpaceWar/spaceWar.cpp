@@ -4,11 +4,10 @@
 #include "iostream"
 
 void spaceWar(sf::RenderWindow& window){
+    window.setActive();
 
     Ship ship;
     Enemys enemys;
-
-    window.setActive();
 
     sf::Texture bgTexture;
     bgTexture.loadFromFile("../Textures/SpaceWar/space.png");
@@ -24,6 +23,11 @@ void spaceWar(sf::RenderWindow& window){
             if (event.type == sf::Event::Closed) {
                 window.close();
                 window.setActive(false);
+            }
+
+            if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape)){
+                window.setActive(false);
+                return;
             }
 
         }

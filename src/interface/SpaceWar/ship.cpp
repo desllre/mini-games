@@ -94,3 +94,6 @@ float Ship::getX(){
 float Ship::getY(){
     return y;
 }
+
+uint16_t Ship::getWidth() { return width; }
+uint16_t Ship::getHeight() { return height; }

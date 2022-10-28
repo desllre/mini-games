@@ -20,8 +20,8 @@ void Enemys::AddEnemy(){
 
     if ( enemysPos.size() <= 8){
         srand(time(0));
-        float x = rand() % 1200;
-        float y = rand() % 400;
+        float x = rand() % 1136;
+        float y = rand() % 500;
         while (true){
             if( review(x, y, enemysPos) ){
                 x = rand() % 1136;

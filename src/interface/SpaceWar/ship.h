@@ -47,6 +47,9 @@ public:
     float getX();
     float getY();
 
+    uint16_t getWidth();
+    uint16_t getHeight();
+
     enum Directs{
         Left = 0,
         Right = 1,
