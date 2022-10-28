@@ -49,34 +49,3 @@ void Enemys::Draw(sf::RenderWindow& window){
 uint8_t Enemys::Amount() {
     return enemys.size();
 }
-
-/*
-void CreateEnemy(std::vector<Object> vect) {
-    bool (*review)(float&, float&, std::vector<Object>&);
-    // в обычной игре таким способом спавнить энеми просто глупость
-    review = [](float& x, float& y, std::vector<Object>& vect){
-        for(auto& i: vect){
-            if(x >= i.x && x <= (i.x + i.width) && y >= i.y && y <= (i.y + i.height))
-                return true;
-        }
-        return false;
-    };
-    uint8_t amountEnemys = vect.size();
-    if ( amountEnemys <= 8){
-        srand(time(0));
-        float x = rand() % 1200;
-        float y = rand() % 400;
-        while (true){
-            if( review(x, y, vect) ){
-                x = rand() % 1200;
-                y = rand() % 500;
-            } else {
-                break;
-            }
-        }
-        vect.push_back(Object());
-        vect[amountEnemys].init(x, y, 64, 64);
-    }
-
-}
- */

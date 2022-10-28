@@ -11,7 +11,6 @@ public:
     Enemys() = default;
     ~Enemys() = default;
 
-
     void AddEnemy(const std::string&);
 
     void Draw(sf::RenderWindow&);
