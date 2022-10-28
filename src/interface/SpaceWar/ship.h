@@ -1,7 +1,26 @@
 #include "SFML/Graphics.hpp"
+#include "vector"
 #include "array"
 
-class Ship{
+class Weapon{
+private:
+    struct Laser{
+        sf::RectangleShape laser;
+        uint32_t length = 40;
+        uint32_t x;
+        uint32_t y;
+    };
+public:
+
+    void Move(){}
+
+    Weapon();
+
+private:
+    std::vector<Laser> lasers;
+};
+
+class Ship: public Weapon{
 public:
     Ship();
 

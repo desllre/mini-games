@@ -1,6 +1,9 @@
 #include "ship.h"
 
-#include "iostream"
+
+/* sf::Vector2f(2., 40.) */
+
+
 
 Ship::Ship() {
     sf::Texture tmpTexture;
