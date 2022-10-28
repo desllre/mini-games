@@ -1,8 +1,36 @@
 #include "ship.h"
 
+#include "iostream"
 
-/* sf::Vector2f(2., 40.) */
+void Weapon::Shoot(float x, float y){
+    if (lasers.size() <= 10){
+        lasers.push_back(Laser( x + 15, y - 40));
+    }
+}
 
+void Weapon::Move(Enemys& enemys){
+
+    for(auto i = lasers.begin(); i < lasers.end(); ++i){
+
+        if (i->y <= -25){
+            lasers.erase(i);
+        }
+
+        if (enemys.CheckEnemy(i->x, i->y + 15)){
+            enemys.DeleteEnemy(i->x, i->y);
+            lasers.erase(i);
+            return;
+        }
+        i->y -= 0.3;
+        i->laser.move(0, -0.3);
+    }
+}
+
+void Weapon::Draw(sf::RenderWindow& window){
+    for( auto i: lasers){
+        window.draw(i.laser);
+    }
+}
 
 
 Ship::Ship() {
@@ -21,30 +49,32 @@ Ship::Ship() {
     currentSprite.setPosition(x,y);
 }
 
-void Ship::Move() {
+void Ship::Move(Enemys& enemys) {
+    weapon.Move(enemys);
+
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)){
-        x -= 0.3;
+        x -= 0.6;
         currentSprite.setTexture(textures[Directs::Left]);
         isMoving = true;
     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)){
-        x += 0.3;
+        x += 0.6;
         currentSprite.setTexture(textures[Directs::Right]);
         isMoving = true;
     }
 
     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)){
-        y -= 0.3;
+        y -= 0.6;
         currentSprite.setTexture(textures[Directs::Forward]);
         isMoving = true;
     } else if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)){
-        y += 0.3;
+        y += 0.6;
         currentSprite.setTexture(textures[Directs::Down]);
         isMoving = true;
     }
 }
 
 void Ship::Draw(sf::RenderWindow& window){
-    Move();
+    weapon.Draw(window);
     if (!isMoving){
         currentSprite.setTexture(textures[Directs::Forward]);
     } else{
@@ -52,4 +82,15 @@ void Ship::Draw(sf::RenderWindow& window){
     }
     currentSprite.setPosition(x, y);
     window.draw(currentSprite);
+}
+
+void Ship::Shoot() {
+    weapon.Shoot(x, y);
+}
+
+float Ship::getX(){
+    return x;
+}
+float Ship::getY(){
+    return y;
 }

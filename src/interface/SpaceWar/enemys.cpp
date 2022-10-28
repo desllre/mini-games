@@ -52,3 +52,23 @@ void Enemys::Draw(sf::RenderWindow& window){
 uint8_t Enemys::Amount() {
     return enemysPos.size();
 }
+
+bool Enemys::CheckEnemy(const float&x, const float&y){
+    for(auto i: enemysPos){
+        if (x >= i.x && x <= i.x + i.width)
+            if (y >= i.y && y <= i.y + i.height)
+                return true;
+    }
+    return false;
+}
+
+void Enemys::DeleteEnemy(const float& x, const float& y){
+    for(auto i = enemysPos.begin(); i != enemysPos.end(); ++i){
+        if (x >= i->x && x <= i->x + i->width)
+            if (y >= i->y && y <= i->y + i->height){
+                enemysPos.erase(i);
+                return;
+            }
+
+    }
+}

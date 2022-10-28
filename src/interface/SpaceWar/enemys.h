@@ -26,6 +26,11 @@ public:
     void Draw(sf::RenderWindow&);
 
     uint8_t Amount();
+
+    bool CheckEnemy(const float&, const float&);
+
+    void DeleteEnemy(const float&, const float&);
+
 private:
     void pushEnemy(const float&, const float&);
 

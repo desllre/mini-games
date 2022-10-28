@@ -1,34 +1,51 @@
+#include "enemys.h"
+
 #include "SFML/Graphics.hpp"
 #include "vector"
 #include "array"
 
+#pragma once
+
 class Weapon{
 private:
     struct Laser{
+        Laser() = default;
+        Laser(float x, float y):laser(sf::Vector2f(2., 25.)), x(x), y(y){
+            laser.setFillColor(sf::Color::Red);
+            laser.setPosition(x,y);
+        }
         sf::RectangleShape laser;
         uint32_t length = 40;
-        uint32_t x;
-        uint32_t y;
+        float x;
+        float y;
     };
+
 public:
 
-    void Move(){}
+    void Shoot(float, float);
 
-    Weapon();
+    void Move(Enemys&);
+
+    void Draw(sf::RenderWindow&);
+
+    Weapon() = default;
 
 private:
     std::vector<Laser> lasers;
 };
 
-class Ship: public Weapon{
+class Ship{
 public:
     Ship();
 
-    void Move();
+    void Move(Enemys&);
 
     void Draw(sf::RenderWindow&);
 
+    void Shoot();
 
+    float getX();
+    float getY();
 
     enum Directs{
         Left = 0,
@@ -37,6 +54,8 @@ public:
         Down = 3
     };
 private:
+    Weapon weapon;
+
     Directs direct = Directs::Forward;
     std::array<sf::Texture, 4> textures;
     sf::Sprite currentSprite;
