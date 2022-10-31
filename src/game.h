@@ -1,4 +1,5 @@
 #include "SFML/Graphics.hpp"
+#include "SFML/Audio.hpp"
 #include "interface/menu.h"
 #include "interface/SpaceWar/ResourceHolder.h"
 
@@ -11,6 +12,14 @@ void Game(){
     sf::RenderWindow window(sf::VideoMode(1200, 800), "mini-games");
     sf::Color bgColor = menu.GetBgColor();
 
+    sf::Music music;
+
+    if (!music.openFromFile("../music/lofi.wav"))
+        return;
+
+    music.setVolume(1.5);
+
+    music.play();
     while (window.isOpen())
     {
         sf::Event event;

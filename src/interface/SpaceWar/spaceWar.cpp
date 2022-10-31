@@ -6,6 +6,13 @@
 void spaceWar(sf::RenderWindow& window){
     window.setActive();
 
+    sf::SoundBuffer buffer;
+    if (!buffer.loadFromFile("../music/shoot.wav"))
+        return;
+
+    sf::Sound shoot;
+    shoot.setBuffer(buffer);
+
     Ship ship;
     Enemys enemys;
 
@@ -39,6 +46,7 @@ void spaceWar(sf::RenderWindow& window){
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && shootClock.getElapsedTime() >= sf::seconds(0.4)){
             ship.Shoot();
+            shoot.play();
             shootClock.restart();
         }
 
